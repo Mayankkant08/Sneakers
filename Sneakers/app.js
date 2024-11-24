@@ -1,5 +1,11 @@
 const wrapper = document.querySelector(".sliderWrapper");
 const menuItems = document.querySelectorAll(".menuItem");
+const wrappers = document.querySelector('.wrapper');
+const loginLink = document.querySelector('.login-link');
+const resgisterLink = document.querySelector('.register-link');
+const btnPopup = document.querySelector('.btnLogin-popup');
+const iconClose = document.querySelector('.icon-close');
+
 
 const products = [
   {
@@ -127,6 +133,22 @@ currentProductSizes.forEach((size, index) => {
 const productButton = document.querySelector(".productButton");
 const payment = document.querySelector(".payment");
 const close = document.querySelector(".close");
+
+resgisterLink.addEventListener('click', () => {
+  wrappers.classList.add('active');
+});
+
+loginLink.addEventListener('click', () => {
+  wrappers.classList.remove('active');
+});
+
+btnPopup.addEventListener('click', () => {
+  wrappers.classList.add('active-popup');
+});
+
+iconClose.addEventListener('click', () => {
+  wrappers.classList.remove('active-popup');
+});
 
 productButton.addEventListener("click", () => {
   payment.style.display = "flex";
