@@ -20,29 +20,273 @@ html {
     justify-content: space-between;
   }
   
-  .search {
-    display: flex;
-    align-items: center;
-    background-color: gray;
-    padding: 10px 20px;
-    border-radius: 10px;
+  .search-container {
+    position: relative;
+    width: 300px;
   }
   
-  .searchInput {
-    border: none;
-    background-color: transparent;
+  .styled-search-bar {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px 0 40px; /* Add padding to avoid overlapping the icon */
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #fff;
+    background: transparent;
+    transition: text-shadow 0.4s ease, color 2s ease, box-shadow 0.4s ease;
   }
   
-  .searchInput::placeholder {
+  .styled-search-bar::placeholder {
+    color: #bbb; /* Placeholder initial color */
+    font-style: italic;
+  }
+  
+  .styled-search-bar:hover,
+  .styled-search-bar:focus {
+    color: lightgray; /* Change text color */
+    text-shadow: 0 0 5px lightgray, 
+                 0 0 2px lightgray; /* Text glowing effect */
+    border-color: lightgray; /* Change border color */
+    box-shadow: 0 0 5px lightgray, 
+                0 0 2px lightgray; /* Glowing box-shadow effect */
+  }
+  
+  .styled-search-bar:hover::placeholder,
+  .styled-search-bar:focus::placeholder {
     color: lightgray;
   }
   
-  .limitedOffer {
-    font-size: 20px;
-    border-bottom: 2px solid green;
+  /* Style for the search icon */
+  .searchIcon {
+    position: absolute;
+    left: 12px; /* Position icon inside the input field */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Makes the icon unclickable */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
     cursor: pointer;
   }
   
+  .styled-search-bar:hover ~ .searchIcon,
+  .styled-search-bar:focus ~ .searchIcon {
+    opacity: 1; /* Make the icon more prominent on hover or focus */
+  }
+  
+  /* Placeholder Styling */
+  .styled-search-bar::placeholder {
+    color: #bbb; /* Initial placeholder color */
+    font-style: italic;
+  }
+  
+  .styled-search-bar:hover::placeholder,
+  .styled-search-bar:focus::placeholder {
+    color: lightgray; /* Placeholder changes on hover/focus */
+  }
+/*login css*/
+  .btnLogin-popup {
+    width: 80px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: text-shadow 0.4 ease, color 2s ease;
+    transition: box-shadow 0.4 ease, color 2s ease;
+  }
+
+  .btnLogin-popup:hover {
+    color: lightgray; /* Change text color */
+    text-shadow: 0 0 5px lightgray, 
+                 0 0 2px lightgray; /* Subtle glowing effect for text */
+    border-color: lightgray; /* Change border color */
+    box-shadow: 0 0 5px lightgray, 
+                0 0 2px lightgray;
+  }
+  .wrapper{
+    position: absolute;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease ,height .2s ease;
+    top: 150;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .wrapper.active-popup{
+    transform: scale(1);
+
+  }
+
+  .wrapper.active{
+    height: 520px;
+  }
+
+  .wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+  }
+
+  .wrapper .form-box.login{
+      transition: trasform .18s ease;
+      transform: translateX(0);
+  }
+
+  .wrapper.active .form-box.login{
+    transition: none;
+    transition: translateX(-400px);
+  }
+
+  .wrapper .form-box.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+  }
+
+  .wrapper.active .form-box.register{
+    transition: trasform .18s ease;
+    transform: translateX(0);
+}
+
+  .wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #111;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .form-box h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+  }
+  .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #111;
+    margin: 30px 0;
+  }
+  .input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color:#fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+
+  .input-box input:focus~label,
+  .input-box input:valid~label{
+    top: -5px;
+
+  }
+
+  .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+
+  }
+  .input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #111;
+    line-height: 57px;
+  }
+  
+  .remember-forgot{
+    font-size: .9em;
+    color: #fff;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+  }
+
+  .remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  remember-forgot a:hover{
+    text-decoration: underline;
+  }
+
+  .btn{
+    width: 100%;
+    height: 45px;
+    background: #111;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .login-resgister{
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+  }
+
+  .login-resgister p a {
+    color: #111;
+    text-decoration: none;
+    font-weight:  600;
+  }
+
+  .login-resgister p a:hover{
+    text-decoration: underline;
+  }
+
   .navBottom {
     display: flex;
     align-items: center;
@@ -54,15 +298,12 @@ html {
     cursor: pointer;
     color: lightgray;
     font-weight: 400;
-    
   }
   .menuItem:hover{
-    text-shadow: 0 0 10px  lightgray, 
-                         0 0 3px  lightgray, 
-                         0 0 5px  lightgray, 
-                         0 0 15px  lightgray;
+    text-shadow: 0 0 5px  lightgray, 
+                 0 0 2px  lightgray;
     color:  lightgray;
-    transition: text-shadow 0.5s ease, color 2s ease;
+    transition: text-shadow 0.4s ease, color 2s ease;
   }
   
   .slider {
