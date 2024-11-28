@@ -36,7 +36,7 @@ html {
     font-weight: 500;
     color: #fff;
     background: transparent;
-    transition: text-shadow 0.4s ease, color 2s ease, box-shadow 0.4s ease;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease; /* Remove text-shadow transitions */
   }
   
   .styled-search-bar::placeholder {
@@ -46,18 +46,33 @@ html {
   
   .styled-search-bar:hover,
   .styled-search-bar:focus {
-    color: lightgray; /* Change text color */
-    text-shadow: 0 0 5px lightgray, 
-                 0 0 2px lightgray; /* Text glowing effect */
     border-color: lightgray; /* Change border color */
-    box-shadow: 0 0 5px lightgray, 
-                0 0 2px lightgray; /* Glowing box-shadow effect */
+    box-shadow: 0 0 5px lightgray, 0 0 2px lightgray; /* Glowing border effect */
   }
   
+  /* Keep placeholder color consistent */
   .styled-search-bar:hover::placeholder,
   .styled-search-bar:focus::placeholder {
-    color: lightgray;
+    color: #bbb; /* Keep placeholder unaffected */
   }
+  
+  /* Style for the search icon */
+  .searchIcon {
+    position: absolute;
+    left: 12px; /* Position icon inside the input field */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Makes the icon unclickable */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .styled-search-bar:hover ~ .searchIcon,
+  .styled-search-bar:focus ~ .searchIcon {
+    opacity: 1; /* Make the icon more prominent on hover or focus */
+  }
+  
   
   /* Style for the search icon */
   .searchIcon {
@@ -153,7 +168,7 @@ html {
 
   .wrapper.active .form-box.login{
     transition: none;
-    transition: translateX(-400px);
+    transform: translateX(-400px);
   }
 
   .wrapper .form-box.register{
@@ -291,6 +306,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* padding-left: 20em; 
+    padding-right: 20em; Match the left padding */
   }
   
   .menuItem {
